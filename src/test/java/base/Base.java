@@ -27,8 +27,9 @@ public class Base {
 		dataProp=new Properties();
 		//File propFile=new File("D:\\College_BoisDeBoulgone_Assurance_Qualite_logiciell_Groupe1247\\Cours_cohorte_Groupe_1247\\Eclipse_Workspace\\frameworkSeleniumOpencart\\src\\main\\java\\config\\config.properties");
 		//user.dir > affiche l'emplacement actuel de mon projet
-		File propFile=new File(System.getProperty("user.dir")+"\\src\\main\\java\\config\\config.properties");
-		File dataPropFile=new File(System.getProperty("user.dir")+"\\src\\main\\java\\testData\\testData.properties");
+		File propFile = new File(System.getProperty("user.dir") + "/src/main/java/config/config.properties");
+		File dataPropFile = new File(System.getProperty("user.dir") + "/src/main/java/testData/testData.properties");
+
 		//Lire à partir d'un fichier morceau par morceau
 		try {
 			FileInputStream dataFis=new FileInputStream(propFile);
