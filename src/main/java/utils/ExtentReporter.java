@@ -29,7 +29,7 @@ public class ExtentReporter {
 		// creer un objet de type properties pour ajouter les infos utiles (url,
 		// tests,browsers)
 		Properties prop=new Properties();
-		File propFile = new File (System.getProperty("user.dir")+"\\src/main/java\\listeners\\config.properties\\");
+		File propFile = new File (System.getProperty("user.dir")+"//src//main//java//listeners//config.properties");
 		FileInputStream fis = new FileInputStream(propFile);
 		prop.load(fis);
 		extentReports.setSystemInfo("Url de lapplication",prop.getProperty("qaUrl"));
