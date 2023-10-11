@@ -14,7 +14,8 @@ public class AccountSuccessPage {
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
 	}
-	public boolean getDisplayStatusOfEditYourAccountInformationOption() {
+	public boolean getDisplayStatusOfEditYourAccountInformationOption() throws InterruptedException {
+		Thread.sleep(2000);
 		//this will return a boolean value true or false
 		boolean displaStatus= editYourAccountInformationOption.isDisplayed();
 		return displaStatus;

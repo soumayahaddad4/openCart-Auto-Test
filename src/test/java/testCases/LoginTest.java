@@ -28,7 +28,7 @@ public class LoginTest extends Base {
 	public void tearDown() {
 		driver.quit();
 	}
-
+//Exigence no 04: l'utilisateur peut se connecter avec des informations d'identification valides 
 	@Test
 	public void verifyLoginWithValidCredentials() {
 		LoginPage loginPage = new LoginPage(driver);
@@ -57,7 +57,7 @@ public class LoginTest extends Base {
 		return data;
 	}
 	@Test(priority=2)
-	public void verifyLoginWithinValidCredentials() throws InterruptedException {
+	public void verifyLoginWithinValidCredentials() {
 		LoginPage loginPage = new LoginPage(driver);
 		 String mailstamp= Utilities.generateTimeStamp();
 		// le mail est généré avec timestimp
@@ -66,7 +66,6 @@ public class LoginTest extends Base {
 		loginPage.typeEmail(mailstamp);
 		loginPage.typePassword(dataProp.getProperty("validPassword"));
 		loginPage.clickOnLoginButton();
-		Thread.sleep(500);
 		Assert.assertEquals(loginPage.getErrorLoginMessage(), dataProp.getProperty("emailLoginWarning"));
 	}
 }

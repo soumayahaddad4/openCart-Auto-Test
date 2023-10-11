@@ -1,9 +1,13 @@
 package pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class RegisterPage{
 	//Le console de POM
@@ -26,7 +30,7 @@ public class RegisterPage{
 	private WebElement passwordField;
 	@FindBy(id="input-newsletter")
 	private WebElement NewsletterButton;
-	@FindBy(xpath="//input[@name='agree']")
+	@FindBy(xpath="//input[@class='form-check-input' and @name='c']")
 	private WebElement PrivacyPolicyButton;
 	@FindBy(css="button[type='submit']")
 	private WebElement buttonContinue;
@@ -40,6 +44,8 @@ public class RegisterPage{
 	private WebElement errorPasswordField;
 	@FindBy(id="alert")
 	private WebElement policyWarning;
+	@FindBy(xpath="//div[text()=' Warning: E-Mail Address is already registered! ']")
+	private WebElement EmailAlreadyRegisteredWarning;
 	@FindBy(xpath="//a[text()\"='login page']")
 	private WebElement LoginPageRedirectLink;
 	
@@ -60,7 +66,11 @@ public class RegisterPage{
 		passwordField.sendKeys(password);
 	}
 	public void selectSubscribe() {
-		PrivacyPolicyButton.click();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
+	    WebElement bouton = wait.until(ExpectedConditions.visibilityOf(PrivacyPolicyButton));
+	    bouton.isEnabled();
+	    bouton.click();
+		
 	}
 	public void agreePolicy() {
 		NewsletterButton.click();
@@ -85,6 +95,9 @@ public class RegisterPage{
 	}
 	public String getPrivacyPolicyError() {
 		return policyWarning.getText();
+	}
+	public String getWarningDoubleRegister() {
+		return EmailAlreadyRegisteredWarning.getText();
 	}
 	public void navigateToLoginPage() {
 		LoginPageRedirectLink.click();
